@@ -33,6 +33,7 @@ class Layout extends Component {
     );
   }
 }
+export default Layout;
 
 // const layout = ( props ) => (
 //     <Aux>
@@ -45,4 +46,5 @@ class Layout extends Component {
 //     </Aux>
 // );
 
-export default Layout;
+
+
