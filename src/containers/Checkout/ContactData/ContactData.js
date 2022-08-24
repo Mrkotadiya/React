@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Button from '../../../components/UI/Button/Button'
 import classes from "./ContactData.css";
 import axios from '../../../axios-order';
+import Spinner from '../../../components/Spinner/Spinner';
 
 export class ContactData extends Component {
 
@@ -37,6 +38,7 @@ export class ContactData extends Component {
           .post("/orders.json", order)
           .then((response) => {
             this.setState({ loading: false});
+            this.props.history.push('/');
           })
           .catch((error) => {
             this.setState({ loading: false });
@@ -45,18 +47,22 @@ export class ContactData extends Component {
          }   
 
   render() {
-
-    return (
-      <div className={classes.ContactData}>
-        <h4>Enter Your Contact data</h4>
+    let form=(
         <form action="">
             <input className={classes.Input} type="text" name="name" id="" placeholder='your name'/>
             <input className={classes.Input} type="email" name="email" id="" placeholder='your emial'/>
             <input className={classes.Input} type="text" name="street" id="" placeholder='street'/>
             <input className={classes.Input} type="text" name="postal" id="" placeholder='Postal Code'/>
             <Button btnType="Success" clicked={this.orderHandler}> ORDER</Button>
-        </form>
-        
+        </form> 
+    );
+    if(this.state.loading){
+        form = <Spinner/>
+    }
+    return (
+      <div className={classes.ContactData}>
+        <h4>Enter Your Contact data</h4>
+        {form}
       </div>
 
     )
