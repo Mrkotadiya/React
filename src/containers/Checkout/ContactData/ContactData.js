@@ -45,7 +45,7 @@ export class ContactData extends Component {
             elementType:"input",
             elementConfig:{
               type:'email',
-              placeholder:" Tour Email"
+              placeholder:" Your Email"
             },
             value:''
           },
@@ -53,8 +53,8 @@ export class ContactData extends Component {
             elementType:"select",
             elementConfig:{
                 options:[
-                  {value:"fastest",displaValue:"fastest"},
-                  {value:"slower",displaValue:"slower"},
+                  {value:"fastest",displayValue:"fastest"},
+                  {value:"slower",displayValue:"slower"},
               ]
             },
             value:''
