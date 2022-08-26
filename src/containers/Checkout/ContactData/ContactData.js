@@ -77,7 +77,10 @@ export class ContactData extends Component {
                   {value:"slower",displayValue:"slower"},
               ]
             },
-            value:''
+            value:'',
+            validation:{
+              required: true
+            },
           },
         },
         loading:false        
@@ -114,10 +117,10 @@ export class ContactData extends Component {
               isValid = value.trim()!=='' && isValid;
             }
           if(rules.minLength){
-            isValid = value.length>= rules.minLength && isValid
+            isValid = value.length >= rules.minLength && isValid
           }
           if(rules.maxLength){
-            isValid = value.length<= rules.maxLength && isValid
+            isValid = value.length <= rules.maxLength && isValid
           }
             return isValid;
          }
@@ -154,6 +157,7 @@ export class ContactData extends Component {
                   elementType={formElement.config.elementType}
                   elementConfig={formElement.config.elementConfig}
                   value={formElement.config.value}
+                  invalid={!formElement.config.valid}
                   changed={(event)=>this.inputChangedHandler(event,formElement.id)}
                   />
             ))}

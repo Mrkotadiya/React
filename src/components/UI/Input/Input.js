@@ -5,11 +5,18 @@ import classes from "./Input.css";
 const Input = (props) => {
 
     let inputElement= null;
+    const inputClassses = [classes.InputElement];
+
+    if(props.invalid && props.shouldValidate){
+        inputClassses.push(classes.Invalid);
+    }
+
 
     switch(props.elementType){
         case('input'):
             inputElement= <input  
-                        className={classes.InputElement} 
+                        // className={classes.InputElement} 
+                        className={inputClassses.join(' ')} 
                         {...props.elementConfig}  
                         value={props.value}
                         onChange={props.changed }
@@ -17,7 +24,8 @@ const Input = (props) => {
             break;
         case('textarea'):
             inputElement = <textarea 
-                            className={classes.InputElement}
+            // className={classes.InputElement} 
+                            className={inputClassses}
                             {...props.elementConfig} 
                             value={props.value}
                             onChange={props.changed }
@@ -25,8 +33,10 @@ const Input = (props) => {
             break;
         case('select'):
             inputElement = (
-                        <select 
-                            className={classes.InputElement}
+                        <select
+                        //  className={classes.InputElement} 
+                        className={inputClassses}
+                            // className='selectBox'
                             value={props.value}
                             onChange={props.changed }
                             >
@@ -40,7 +50,8 @@ const Input = (props) => {
             break;
         default:
                 inputElement = <input 
-                                className={classes.InputElement} 
+                // className={classes.InputElement} 
+                                className={inputClassses} 
                                 {...props.elementConfig} 
                                 value={props.value}
                                 onChange={props.changed }

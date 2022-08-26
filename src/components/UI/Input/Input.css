@@ -26,3 +26,21 @@ Input{
     background-color: #ccc;
 
 }
+
+.Invalid{
+    border:1px solid red;
+    background-color: #FDA49A;
+}
+/* .selectBox{
+    outline: none;
+    border: 1px solid #ccc;
+    background-color: white;
+    font:inherit;
+    padding: 6px 10px;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    border:1px solid red;
+    background-color: #FDA49A;  
+
+} */
