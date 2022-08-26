@@ -4,6 +4,7 @@ import classes from "./ContactData.css";
 import axios from '../../../axios-order';
 import Spinner from '../../../components/Spinner/Spinner';
 import Input from '../../../components/UI/Input/Input';
+
 export class ContactData extends Component {
     state={
         orderForm:{
@@ -17,7 +18,9 @@ export class ContactData extends Component {
             validation:{
               required: true
             },
-            valid:false
+            valid:false,
+            touched:false
+
           },
           street:{
             elementType:"input",
@@ -29,7 +32,8 @@ export class ContactData extends Component {
             validation:{
               required: true
             },
-            valid:false
+            valid:false,
+            touched:false
           },
           zipCode: {
             elementType:"input",
@@ -43,7 +47,8 @@ export class ContactData extends Component {
               minLength:5,
               maxLength:5
             },
-            valid:false
+            valid:false,
+            touched:false
           },
           country: {
             elementType:"input",
@@ -55,7 +60,8 @@ export class ContactData extends Component {
             validation:{
               required: true
             },
-            valid:false
+            valid:false,
+            touched:false
           },
           email:{
             elementType:"input",
@@ -67,7 +73,8 @@ export class ContactData extends Component {
             validation:{
               required: true
             },
-            valid:false
+            valid:false,
+            touched:false
           },
           deliveryMethod: {
             elementType:"select",
@@ -135,6 +142,7 @@ export class ContactData extends Component {
           };
           updatedFormElement.value = event.target.value;
           updatedFormElement.valid = this.checkValidity(updatedFormElement.value,updatedFormElement.validation);
+          updatedFormElement.touched=true;
           updatedOrderForm[inputIdentifier] = updatedFormElement;
           console.log(updatedFormElement);
           this.setState({orderForm: updatedOrderForm})
@@ -158,10 +166,12 @@ export class ContactData extends Component {
                   elementConfig={formElement.config.elementConfig}
                   value={formElement.config.value}
                   invalid={!formElement.config.valid}
+                  shouldValidate={formElement.config.validation}
+                  touched={formElement.config.touched}
                   changed={(event)=>this.inputChangedHandler(event,formElement.id)}
                   />
             ))}
-            <Button btnType="Success"> ORDER</Button>
+            <Button btnType="Success"> ORDER </Button>
         </form> 
     );
     if(this.state.loading){
