@@ -3,12 +3,11 @@ import CheckoutSummary from '../../components/Order/CheckoutSummary/CheckoutSumm
 import {Route} from 'react-router-dom';
 import ContactData from './ContactData/ContactData';
 
-export class Checkout extends Component {
+export class Checkout extends Component { 
   state={
     ingredients:null,
     price:0
-          
-    }
+  }
 
   componentWillMount(){
     const query = new URLSearchParams(this.props.location.search);
