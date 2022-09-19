@@ -1,4 +1,3 @@
-import { stat } from "fs-extra";
 import * as actionTypes from "../actions/actionTypes";
 
 const initialState={
@@ -24,13 +23,12 @@ const reducer = (state = initialState,action)=>{
                 loading:false,
                 orders:state.orders.concat(newOrder)
             }
-            break;
+        
         case actionTypes.PURCHASE_BURGER_FAIL:
             return{
                 ...state,
                 loading:false
             }
-            break;
     
         default:
             return state;
