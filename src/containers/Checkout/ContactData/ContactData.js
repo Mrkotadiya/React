@@ -95,8 +95,7 @@ export class ContactData extends Component {
             valid:true
           },
         },
-        formIsValid:false,
-        loading:false        
+        formIsValid:false    
     }
      orderHandler=(event)=>{
         event.preventDefault(); 
@@ -185,7 +184,7 @@ export class ContactData extends Component {
             <Button btnType="Success" disabled={!this.state.formIsValid}> ORDER </Button>
         </form> 
     );
-      if(this.state.loading){
+      if(this.props.loading){
           form = <Spinner/>
       }
     return (
@@ -200,13 +199,17 @@ export class ContactData extends Component {
 const mapStateProps = state=>{
   return {
     ings:state.ingredients,
-    price: state.totalPrice
+    price: state.totalPrice,
+    loading:state.loading
   }
 }
 
 const mapDispatchToProps = dispatch =>{
-  onOrderBurger : (orderData)=>dispatch(actions.purchaseBurgerStart)
+  return{
+
+    onOrderBurger : (orderData)=>dispatch(actions.purchaseBurgerStart)
+  }
 
 }
 
-export default connect(mapStateProps)(withErrorHandler(ContactData ,axios));
+export default connect(mapStateProps,mapDispatchToProps)(withErrorHandler(ContactData ,axios));
